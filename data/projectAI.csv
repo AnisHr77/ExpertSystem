@@ -1,0 +1,38 @@
+id;conditions;conclusion;explanation
+R1;mold_seen==yes;unsafe=yes;"Visible mold
+detected ? food is
+unsafe"
+R2;smell_off==yes;unsafe=yes;"Bad or unusual smell
+indicates food
+spoilage"
+R3;"perishable==yes;
+temp_over_90F==yes;
+hours_out>1";unsafe=yes;"Perishable food left
+out more than 1
+hour in hot weather"
+R4;"perishable==yes;
+temp_over_90F==no
+;hours_out>2";unsafe=yes;"Perishable food left
+out more than 2
+hours"
+R5;"perishable==yes;
+hours_out<=2;
+smell_off==no;
+mold_seen==no";unsafe=no;"Food conditions
+indicate it is still safe"
+R6;unsafe==yes;action=DISCARD;"Unsafe food must be
+discarded"
+R7;"unsafe==no;
+perishable==yes";action=EAT;"Safe perishable food
+can be eaten"
+R8;"perishable==no;
+mold_seen==no";unsafe=no;"Non?perishable food
+without mold is safe"
+R9;"unsafe==no;
+reheated==no";action=REHEAT;"Safe food should be
+reheated before
+eating"
+R10;"unsafe==no;
+reheated==yes";action=EAT;"Food reheated
+properly can be
+eaten"
