@@ -1,129 +1,9 @@
 [
   {
-    "timestamp": "2026-02-01T21:06:20.946220",
-    "input_facts": {
-      "perishable": "no",
-      "temp_over_90F": "yes",
-      "hours_out": 1.5,
-      "mold_seen": "yes",
-      "smell_off": "yes",
-      "reheated": "yes"
-    },
-    "result": "DISCARD",
-    "applied_rules": [
-      {
-        "rule_id": "R1",
-        "effect": "Set unsafe=yes",
-        "explanation": "Visible mold\ndetected ? food is\nunsafe"
-      },
-      {
-        "rule_id": "R6",
-        "effect": "Set action=DISCARD",
-        "explanation": "Unsafe food must be\ndiscarded"
-      }
-    ]
-  },
-  {
-    "timestamp": "2026-02-01T21:06:27.993446",
-    "input_facts": {
-      "perishable": "no",
-      "temp_over_90F": "yes",
-      "hours_out": 1.5,
-      "mold_seen": "yes",
-      "smell_off": "yes",
-      "reheated": "no"
-    },
-    "result": "DISCARD",
-    "applied_rules": [
-      {
-        "rule_id": "R1",
-        "effect": "Set unsafe=yes",
-        "explanation": "Visible mold\ndetected ? food is\nunsafe"
-      },
-      {
-        "rule_id": "R6",
-        "effect": "Set action=DISCARD",
-        "explanation": "Unsafe food must be\ndiscarded"
-      }
-    ]
-  },
-  {
-    "timestamp": "2026-02-01T21:06:32.618376",
-    "input_facts": {
-      "perishable": "no",
-      "temp_over_90F": "no",
-      "hours_out": 1.5,
-      "mold_seen": "yes",
-      "smell_off": "yes",
-      "reheated": "no"
-    },
-    "result": "DISCARD",
-    "applied_rules": [
-      {
-        "rule_id": "R1",
-        "effect": "Set unsafe=yes",
-        "explanation": "Visible mold\ndetected ? food is\nunsafe"
-      },
-      {
-        "rule_id": "R6",
-        "effect": "Set action=DISCARD",
-        "explanation": "Unsafe food must be\ndiscarded"
-      }
-    ]
-  },
-  {
-    "timestamp": "2026-02-01T21:06:37.818902",
-    "input_facts": {
-      "perishable": "no",
-      "temp_over_90F": "no",
-      "hours_out": 1.5,
-      "mold_seen": "no",
-      "smell_off": "no",
-      "reheated": "no"
-    },
-    "result": "REHEAT",
-    "applied_rules": [
-      {
-        "rule_id": "R8",
-        "effect": "Set unsafe=no",
-        "explanation": "Non?perishable food\nwithout mold is safe"
-      },
-      {
-        "rule_id": "R9",
-        "effect": "Set action=REHEAT",
-        "explanation": "Safe food should be\nreheated before\neating"
-      }
-    ]
-  },
-  {
-    "timestamp": "2026-02-01T21:09:34.905383",
-    "input_facts": {
-      "perishable": "no",
-      "temp_over_90F": "no",
-      "hours_out": 1.5,
-      "mold_seen": "no",
-      "smell_off": "no",
-      "reheated": "no"
-    },
-    "result": "REHEAT",
-    "applied_rules": [
-      {
-        "rule_id": "R8",
-        "effect": "Set unsafe=no",
-        "explanation": "Non?perishable food\nwithout mold is safe"
-      },
-      {
-        "rule_id": "R9",
-        "effect": "Set action=REHEAT",
-        "explanation": "Safe food should be\nreheated before\neating"
-      }
-    ]
-  },
-  {
-    "timestamp": "2026-02-01T21:09:46.338926",
+    "timestamp": "2026-02-03T23:05:46.538208",
     "input_facts": {
       "perishable": "yes",
-      "temp_over_90F": "yes",
+      "temp_over_90F": "no",
       "hours_out": 1.5,
       "mold_seen": "no",
       "smell_off": "no",
@@ -131,25 +11,368 @@
     },
     "result": "REHEAT",
     "applied_rules": [
-      {
-        "rule_id": "R3",
-        "effect": "Set unsafe=yes",
-        "explanation": "Perishable food left\nout more than 1\nhour in hot weather"
-      },
       {
         "rule_id": "R5",
         "effect": "Set unsafe=no",
-        "explanation": "Food conditions\nindicate it is still safe"
+        "explanation": "Food conditions\r\nindicate it is still safe"
       },
       {
         "rule_id": "R7",
         "effect": "Set action=EAT",
-        "explanation": "Safe perishable food\ncan be eaten"
+        "explanation": "Safe perishable food\r\ncan be eaten"
       },
       {
         "rule_id": "R9",
         "effect": "Set action=REHEAT",
-        "explanation": "Safe food should be\nreheated before\neating"
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-03T23:05:52.090386",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-03T23:06:07.882503",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-03T23:06:29.289883",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-03T23:58:56.877840",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-04T00:07:55.730021",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-04T00:09:35.055259",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-04T00:10:00.266112",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-04T00:10:27.487934",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-04T00:11:50.418597",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-04T00:21:58.675013",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-04T00:25:34.288913",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-02-04T00:56:22.339608",
+    "input_facts": {
+      "perishable": "yes",
+      "temp_over_90F": "no",
+      "hours_out": 1.5,
+      "mold_seen": "no",
+      "smell_off": "no",
+      "reheated": "no"
+    },
+    "result": "REHEAT",
+    "applied_rules": [
+      {
+        "rule_id": "R5",
+        "effect": "Set unsafe=no",
+        "explanation": "Food conditions\r\nindicate it is still safe"
+      },
+      {
+        "rule_id": "R7",
+        "effect": "Set action=EAT",
+        "explanation": "Safe perishable food\r\ncan be eaten"
+      },
+      {
+        "rule_id": "R9",
+        "effect": "Set action=REHEAT",
+        "explanation": "Safe food should be\r\nreheated before\r\neating"
       }
     ]
   }

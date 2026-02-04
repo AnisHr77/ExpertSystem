@@ -6,14 +6,9 @@ from datetime import datetime
 import json
 
 
-# ==============================
-# CONFIGURATION
-# ==============================
+
 class Config:
     APP_NAME = "Food Safety Expert System"
-    VERSION = "v1.2.0"
-    COMPANY = "Food Safety Analytics"
-
     PRIMARY_COLOR = "#2C3E50"
     SECONDARY_COLOR = "#3498DB"
     SUCCESS_COLOR = "#27AE60"
@@ -30,21 +25,19 @@ class Config:
     os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
 
 
-# ==============================
-# DATA HANDLER
-# ==============================
+
 class DataHandler:
     @staticmethod
     def load_rules():
         try:
-            df = pd.read_csv(Config.CSV_PATH, delimiter=';', encoding='utf-8')
+            df = pd.read_csv(Config.CSV_PATH, delimiter=';')
 
             for col in df.select_dtypes(include="object").columns:
                 df[col] = df[col].str.strip()
 
             required_cols = ["id", "conditions", "conclusion", "explanation"]
             if not all(col in df.columns for col in required_cols):
-                raise ValueError(f"CSV must contain columns: {required_cols}")
+                print(f"CSV must contain columns: {required_cols}")
 
             return df
         except Exception as e:
@@ -79,9 +72,7 @@ class DataHandler:
             print("Logging failed:", e)
 
 
-# ==============================
-# EXPERT SYSTEM ENGINE
-# ==============================
+
 class ExpertSystem:
     @staticmethod
     def evaluate_condition(condition, facts):
@@ -100,12 +91,16 @@ class ExpertSystem:
         except:
             return False
 
+
     @staticmethod
     def rule_matches(rule_conditions, facts):
         if pd.isna(rule_conditions) or str(rule_conditions).strip() == "":
+            #ida kant null wla fargha
             return False
 
         conditions = str(rule_conditions).replace("\n", "").split(";")
+        #"perishable == yes; hours_out > 2" -> conditions = ["perishable == yes","hours_out > 2"]
+
         return all(ExpertSystem.evaluate_condition(cond, facts) for cond in conditions)
 
     @staticmethod
@@ -121,7 +116,7 @@ class ExpertSystem:
             changed = False
             iteration += 1
 
-            for _, rule in rules_df.iterrows():
+            for index, rule in rules_df.iterrows():
                 rule_id = rule["id"]
                 if rule_id in fired_rules:
                     continue
@@ -144,9 +139,7 @@ class ExpertSystem:
         return facts, trace
 
 
-# ==============================
-# UI COMPONENTS
-# ==============================
+
 class ModernButton(tk.Button):
     def __init__(self, parent, **kwargs):
         bg_color = kwargs.pop('bg', Config.SECONDARY_COLOR)
@@ -191,13 +184,11 @@ class CardFrame(tk.Frame):
             tk.Label(self, text=title, font=("Segoe UI", 11, "bold"),
                      bg="white", fg="#2C3E50").pack(anchor="w", padx=10, pady=(5, 0))
 
-        self.inner_frame = tk.Frame(self, bg="white")
-        self.inner_frame.pack(fill="both", expand=True, padx=padding, pady=padding)
+        self.inner_frame = tk.Frame(self, bg="white") #div background
+        self.inner_frame.pack(fill="both", expand=True, padx=padding, pady=padding) #responsive
 
 
-# ==============================
-# MAIN APPLICATION
-# ==============================
+
 class FoodSafetyExpertSystemApp:
     def __init__(self, root):
         self.root = root
@@ -207,7 +198,7 @@ class FoodSafetyExpertSystemApp:
         self.create_widgets()
 
     def setup_window(self):
-        self.root.title(f"{Config.APP_NAME} {Config.VERSION}")
+        self.root.title(f"{Config.APP_NAME}")
         self.root.geometry("800x850")
         self.root.configure(bg=Config.LIGHT_BG)
 
@@ -264,10 +255,7 @@ class FoodSafetyExpertSystemApp:
         self.trace_text.insert(tk.END, "No analysis yet...\n")
         self.trace_text.config(state="disabled")
 
-        # STATUS BAR
-        self.status_bar = tk.Label(self.root, text="Ready",
-                                   bg=Config.WHITE, fg="#7F8C8D", anchor="w")
-        self.status_bar.pack(side=tk.BOTTOM, fill=tk.X)
+
 
     def create_input_fields(self, parent):
         fields = [
@@ -323,7 +311,7 @@ class FoodSafetyExpertSystemApp:
         self.trace_text.delete(1.0, tk.END)
 
         if trace:
-            self.trace_text.insert(tk.END, "APPLIED RULES:\n" + "=" * 45 + "\n\n")
+            self.trace_text.insert(tk.END, "APPLIED RULES:\n" + "\n\n")
             for r_id, effect, explanation in trace:
                 self.trace_text.insert(tk.END, f"Rule {r_id}\n")
                 self.trace_text.insert(tk.END, f"→ Effect: {effect}\n")
@@ -333,7 +321,7 @@ class FoodSafetyExpertSystemApp:
             self.trace_text.insert(tk.END, "No rules were triggered.\n")
 
         self.trace_text.config(state="disabled")
-        self.status_bar.config(text="Analysis completed")
+
 
     def clear_form(self):
         self.input_vars["perishable"].set("yes")
@@ -348,13 +336,8 @@ class FoodSafetyExpertSystemApp:
         self.trace_text.insert(tk.END, "No analysis yet...\n")
         self.trace_text.config(state="disabled")
 
-        self.status_bar.config(text="Form cleared")
 
-
-# ==============================
-# ENTRY POINT
-# ==============================
 if __name__ == "__main__":
-    root = tk.Tk()
+    root = tk.Tk() #ينشئ النافذة الرئيسية للتطبيق
     app = FoodSafetyExpertSystemApp(root)
-    root.mainloop()
+    root.mainloop()  #خلي النافذة مفتوحة وتستقبل نقرات المستخدم، كتابة، أزرار…
